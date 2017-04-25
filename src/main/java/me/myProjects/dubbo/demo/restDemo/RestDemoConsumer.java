@@ -27,5 +27,6 @@ public class RestDemoConsumer {
         configApplicationContext.start();
 
         System.out.println("start consumer success!");
+        System.out.println(System.in.read());
     }
 }
