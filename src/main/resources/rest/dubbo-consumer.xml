@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	   http://code.alibabatech.com/schema/dubbo
+	     http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="dubboDemo"/>
+    <dubbo:registry address="zookeeper://${zk.address}" timeout="30000"/>
+    <!--dubbo 监控 dubbox 改进版本中有用到-->
+    <!--<dubbo:monitor protocol="registry" enable="${dubbo.monitor.enable}"/>-->
+    <!--  使用 kryo 序列化 -->
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" serialization="kryo"/>
+
+    <!--extension 为rest easy interceter-->
+    <dubbo:protocol name="rest" port="${server.port}" server="jetty"
+                    extension="me.myProjects.dubbo.demo.restDemo.RestInterceptor" contextpath="/"/>
+
+    <dubbo:service interface="me.myProjects.dubbo.restService.DubboService" ref="restService" retries="0"
+                   timeout="30000" registry="N/A"/>
+</beans>
