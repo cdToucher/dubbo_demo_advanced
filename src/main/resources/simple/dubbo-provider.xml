@@ -8,11 +8,11 @@
 	     http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <dubbo:application name="dubboDemo"/>
-    <dubbo:registry address="zookeeper://localhost:2181" timeout="30000"/>
+    <dubbo:registry address="zookeeper://${zk.address}" timeout="30000"/>
     <!--dubbo 监控 dubbox 改进版本中有用到-->
     <!--<dubbo:monitor protocol="registry" enable="${dubbo.monitor.enable}"/>-->
-    <dubbo:protocol name="dubbo" port="20880" serialization="kryo"/>
+    <!--  使用 kryo 序列化 -->
+    <dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" serialization="kryo"/>
 
-    <dubbo:service interface="me.myProjects.dubbo.service.DubboService" ref="dubboRpcService" retries="0"
-                   timeout="30000" protocol="dubbo"/>
+    <dubbo:service interface="me.myProjects.dubbo.service.DubboService" ref="dubboRpcService" retries="0" timeout="30000" protocol="dubbo"/>
 </beans>

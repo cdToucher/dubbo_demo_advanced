@@ -9,17 +9,17 @@ import java.io.IOException;
  * <p>
  * this is a easiest dubbo demo
  */
-@PropertySource("classpath:application.properties")
-@ImportResource("classpath:simple/dubbo-provider.xml")
-@ComponentScan("me.myProjects.dubbo.service")
+@Configuration
+@ImportResource("classpath:/simple/dubbo-provider.xml")
 public class SimpleDemoProvider {
 
     public static void main(String[] args) throws IOException {
         AnnotationConfigApplicationContext configApplicationContext =
-                new AnnotationConfigApplicationContext(SimpleDemoProvider.class);
+                new AnnotationConfigApplicationContext(ApplicationConfig.class);
         configApplicationContext.start();
 
-        System.out.println("start provider success!");
+        System.out.println(" provider started!");
+        System.out.println(System.in.read());
     }
 
 }
