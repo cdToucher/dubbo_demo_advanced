@@ -1,10 +1,8 @@
 package me.myProjects.dubbo.restService;
 
 import com.alibaba.fastjson.JSON;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -13,7 +11,7 @@ import java.util.Map;
 
 /**
  * Created by chendong on 2017/4/25.
- *
+ * <p>
  * rpc service
  */
 @Service("restService")
